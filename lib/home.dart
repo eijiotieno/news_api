@@ -1,7 +1,6 @@
 import 'package:api_app/api_manager.dart';
 import 'package:api_app/article_model.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -28,25 +27,42 @@ class _HomeState extends State<Home> {
               return ListView.builder(
                 //Now let's create our custom List tile
                 itemCount: articles!.length,
-                itemBuilder: (context, index) =>
-                    ListTile(
-                      title: Text(articles[index].title),
+                itemBuilder: (context, index) => Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.black12,
+                      ),
                     ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(articles[index].title),
+                        ),
+
+                        Container(
+                          height: 200,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(articles[index].urlToImage),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               );
             }
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           },
         ),
-        // body: ListView.builder(
-
-        //   itemBuilder: (BuildContext context, int index) {
-        //     return ListTile(
-        //       title: Text(newsList[index].title.toString()),
-        //     );
-        //   },
-        // ),
       ),
     );
   }

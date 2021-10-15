@@ -3,20 +3,6 @@ import 'dart:convert';
 import 'package:api_app/article_model.dart';
 import 'package:http/http.dart';
 
-// class API_MANAGER {
-//   void getNews() async {
-//     var client = http.Client();
-
-//     var response = await client.get(
-//       Uri.parse(
-//           "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=110d227e30db4f62bb962db1e14486b2"),
-//     );
-//     if (response.statusCode == 200) {
-//       var jsonString = response.body;
-//     }
-//   }
-// }
-
 class ApiService {
   //let's add an Endpoint URL, you can check the website documentation
   // and learn about the different Endpoint
